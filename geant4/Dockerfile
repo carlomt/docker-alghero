@@ -100,7 +100,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /opt/geant4/ /opt/geant4/
-COPY --from=builder /opt/geant4/src/examples/ /workspace/geant4-examples/
+COPY --from=builder /workspace/geant4/src/examples/ /workspace/geant4-examples/
 
 RUN mkdir -p /opt/geant4/data && chmod 777 /opt/geant4/data
 
