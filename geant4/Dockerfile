@@ -61,6 +61,19 @@ RUN mkdir -p /workspace/geant4/build && \
     ../src/ && \
      ninja install
 
+RUN mkdir -p /opt/geant4-st/ && \
+    cd /workspace/geant4/build && \
+    cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/opt/geant4-st \
+    -DGEANT4_INSTALL_DATA=OFF \
+    -DGEANT4_INSTALL_DATADIR=/opt/geant4/data \
+    -DGEANT4_BUILD_MULTITHREADED=OFF \
+    -DGEANT4_USE_GDML=ON \
+    -DGEANT4_USE_QT=ON \
+    -DGEANT4_USE_OPENGL_X11=ON \
+    -DGEANT4_INSTALL_EXAMPLES=OFF \
+    ../src/ && \
+     ninja install
+
 #######################################################################
 
 FROM $BASE_IMAGE
@@ -100,6 +113,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /opt/geant4/ /opt/geant4/
+COPY --from=builder /opt/geant4-st/ /opt/geant4-st/
 COPY --from=builder /workspace/geant4/src/examples/ /workspace/geant4-examples/
 
 RUN mkdir -p /opt/geant4/data && chmod 777 /opt/geant4/data
