@@ -5,7 +5,7 @@ services:
       stdin_open: true 
       tty: true
       volumes:
-         - /tmp/.X11-unix:/tmp/.X11-unix      
+         - X11-unix:/tmp/.X11-unix      
       environment:
          - DISPLAY=${DOCKERDISPLAY}
    gears:
@@ -13,7 +13,7 @@ services:
       stdin_open: true 
       tty: true
       volumes:
-         - /tmp/.X11-unix:/tmp/.X11-unix      
+         - X11-unix:/tmp/.X11-unix      
       environment:
          - DISPLAY=${DOCKERDISPLAY}         
    geant4:
@@ -25,7 +25,7 @@ services:
          - DISPLAY=${DOCKERDISPLAY}        
       entrypoint: ["/usr/bin/bash", "-l"]
       volumes:
-         - /tmp/.X11-unix:/tmp/.X11-unix
+         - X11-unix:/tmp/.X11-unix
          - ./geant4-datasets:/opt/geant4/data:ro
          - ./geant4-source:/usr/local/geant4:ro
          - ./.docker-home:/root
@@ -56,7 +56,7 @@ services:
          - DISPLAY=${DOCKERDISPLAY}                 
       entrypoint: ["/usr/bin/bash", "-l"]
       volumes:
-         - /tmp/.X11-unix:/tmp/.X11-unix        
+         - X11-unix:/tmp/.X11-unix        
          - ./.docker-home:/root
          - ./geant4-exercises:/root/geant4-exercises                  
       working_dir: /root         
@@ -69,6 +69,9 @@ volumes:
       external: true
    .docker-home:
       external: true
-   /tmp/.X11-unix:
-      external: true
-     
+   X11-unix:
+       driver: local
+       driver_opts:
+          type: 'none'
+          o: 'bind'
+          device: '/tmp/.X11-unix'
