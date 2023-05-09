@@ -18,7 +18,7 @@ services:
          - DISPLAY=${DOCKERDISPLAY}         
    geant4:
       # user: $(id -u):$(id -g)
-      image: "carlomt/geant4:latest-gui"
+      image: "carlomt/alghero-geant4"
       stdin_open: true 
       tty: true
       environment:
@@ -35,7 +35,7 @@ services:
       #    data-downloader:
       #      condition: service_completed_successfully
    prepare:
-      image: "carlomt/geant4:latest-gui"
+      image: "carlomt/geant4"
       command:
         - |
           /opt/geant4/bin/geant4-config --install-datasets 
@@ -74,4 +74,4 @@ volumes:
        driver_opts:
           type: 'none'
           o: 'bind'
-          device: '/tmp/.X11-unix'
+          device: '${X11FOLDER}'
