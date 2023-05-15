@@ -18,7 +18,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     rm -rf /var/lib/apt/lists/*
 
 # RUN mkdir -p /usr/local/geant4/ && \
-#     ln -s /opt/geant4/ /usr/local/geant4/geant4-$G4-VERSION}-install/
+#     ln -s /opt/geant4/ /usr/local/geant4/geant4-${G4-VERSION}-install/
 
+COPY makelink.sh /etc/profile.d/makelink.sh
 
 ENTRYPOINT  ["/usr/bin/bash", "-l"]
