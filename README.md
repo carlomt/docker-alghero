@@ -4,8 +4,6 @@ you can download these containers with:
 
 `docker pull carlomt/alghero-geant4:latest`
 
-`docker pull carlomt/alghero-geant4:latest-gui`
-
 ## Compose
 
 To simplify the use of these images we developed a Docker Compose file, to use it donwload it to a folder from
@@ -87,3 +85,4 @@ Finally, you have to allow X11 forwarding to local containers:
 xhost +localhost
 ```
 the latter command has to be executed every time XQuartz is restarted.
+
