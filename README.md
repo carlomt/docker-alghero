@@ -86,3 +86,10 @@ xhost +localhost
 ```
 the latter command has to be executed every time XQuartz is restarted.
 
+
+## Jupyter
+
+to run jupyter:
+```
+docker compose run --service-ports jupyter
+```
