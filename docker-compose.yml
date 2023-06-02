@@ -59,7 +59,33 @@ services:
          - X11-unix:/tmp/.X11-unix        
          - ./docker-home:/root
          - ./geant4-exercises:/root/geant4-exercises                  
-      working_dir: /root         
+      working_dir: /root
+   python:
+      image: "carlomt/alghero-python-local"
+      stdin_open: true 
+      tty: true
+      environment:
+         - DISPLAY=${DOCKERDISPLAY}                 
+      entrypoint: ["ipython"]
+      volumes:
+         - X11-unix:/tmp/.X11-unix        
+         - ./docker-home:/root
+         - ./geant4-exercises:/root/geant4-exercises                  
+      working_dir: /root
+   jupyter:
+      image: "carlomt/alghero-python-local"
+      stdin_open: true 
+      tty: true
+      environment:
+         - DISPLAY=${DOCKERDISPLAY}
+      ports:
+        - 8887:8887
+      entrypoint: ["jupyter","notebook","--allow-root","--no-browser","--ip=${DOCKERIP}","--port=8887"]
+      volumes:
+         - X11-unix:/tmp/.X11-unix        
+         - ./docker-home:/root
+         - ./geant4-exercises:/root/geant4-exercises                  
+      working_dir: /root      
 volumes:
    geant4-datasets:
       external: true
