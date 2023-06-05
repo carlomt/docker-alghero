@@ -1,8 +1,9 @@
 # docker-alghero
 
 you can download these containers with:
-
-`docker pull carlomt/alghero-geant4:latest`
+```
+docker pull carlomt/alghero-geant4:latest
+```
 
 ## Compose
 
@@ -11,8 +12,9 @@ To simplify the use of these images we developed a Docker Compose file, to use i
 https://raw.githubusercontent.com/carlomt/docker-alghero/main/docker-compose.yml
 
 if you want to use curl from the terminal:
-
-`curl https://raw.githubusercontent.com/carlomt/docker-alghero/main/docker-compose.yml --output docker-compose.yml`
+```
+curl https://raw.githubusercontent.com/carlomt/docker-alghero/main/docker-compose.yml --output docker-compose.yml
+```
 
 in the same folder, download one of the following files accordingly to your operating system
 - https://raw.githubusercontent.com/carlomt/docker-alghero/main/env_linux
@@ -24,20 +26,19 @@ and rename it .env :
 or, using curl (run only one of these commands, accordingly to your operating system):
 
 - linux:
-
-`curl https://raw.githubusercontent.com/carlomt/docker-alghero/main/env_linux --output .env`
-
+```
+curl https://raw.githubusercontent.com/carlomt/docker-alghero/main/env_linux --output .env
+```
 - windows:
-
-`curl https://raw.githubusercontent.com/carlomt/docker-alghero/main/env_windows --output .env`
-
+```
+curl https://raw.githubusercontent.com/carlomt/docker-alghero/main/env_windows --output .env
+```
 - mac: 
-
-`curl https://raw.githubusercontent.com/carlomt/docker-alghero/main/env_mac --output .env`
-
+```
+curl https://raw.githubusercontent.com/carlomt/docker-alghero/main/env_mac --output .env
+```
 
 run:
-
 `docker compose run prepare`
 
 it will create the subfolders, download the Geant4 datasets and source code. Once it has finished, you can run the Geant4 container:
@@ -50,8 +51,9 @@ To have the graphic user interface you should prepare your operating system host
 
 ### Linux
 Add local connections to X11 access control list:
-
-`xhost local:root`
+```
+xhost local:root
+```
 
 such a command has to be executed every time you reboot your computer
 
@@ -68,16 +70,18 @@ Install XQuartz
 https://www.xquartz.org/
 
 start XQuartz:
-
-`open -a XQuartz`
+```
+open -a XQuartz
+```
 
 go to XQuartz->Settings and in the `Security` panel enable `Allow connections from network clients`
 
 restart XQuartz:
 
 Check where the XQuartz config file, or domain, is located with:
-
-`quartz-wm --help`
+```
+quartz-wm --help
+```
 
 which should output:
 ```
