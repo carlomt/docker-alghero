@@ -95,15 +95,11 @@ volumes:
    geant4-exercises:
       external: true
    docker-home:
-<<<<<<< HEAD
        driver: local
        driver_opts:
           type: 'none'
           o: 'bind'
           device: '${DOCKERHOME}'      
-=======
-      external: true
->>>>>>> 26cb96add98295ff8f604c8fdd6dda704b75ec70
    X11-unix:
        driver: local
        driver_opts:
