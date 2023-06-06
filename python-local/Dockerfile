@@ -11,6 +11,6 @@ RUN set -eux; \
     rm -rf /var/lib/apt/lists/*
 
 RUN python -m pip install --upgrade pip && \
-pip install numpy matplotlib pandas ipython jupyter awkward uproot
+pip install numpy matplotlib pandas ipython jupyter awkward uproot scipy
 
 #ENTRYPOINT  ["/bin/bash", "-l"]
